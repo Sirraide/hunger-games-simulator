@@ -1,0 +1,134 @@
+$accentcolour: #857251
+$accentmedium: lighten($accentcolour, 10)
+$accentlight: rgba(206, 169, 100, 1)
+$accentlighter: lighten($accentlight, 20)
+$accentdarker: darken($accentcolour, 20)
+$accentblack: #1e1e1e
+$accentred: #9d2c2c
+$accentlightblack: lighten($accentblack, 20)
+$accentcolour-gradient: linear-gradient(rgba(206, 169, 100, 0), rgba(206, 169, 100, 1), rgba(206, 169, 100, 0))
+
+$navbar-height: 4rem
+$nav-link-min-width: 8rem
+$banner-height: 20rem
+$content-wrapper-padding-top: 1cm
+$ipafont: CharisSIL, "Doulos SIL", "Times New Roman", serif
+
+$video-width-16-to-9: 56.25%
+
+\:root
+	--accentcolour: #{$accentcolour}
+	--accentlight: rgba(206, 169, 100, 1)
+	--accentlighter: lighten(#{$accentlight}, 20)
+	--accentdarker: darken(#{$accentcolour}, 20)
+	--accentcolour-gradient: linear-gradient(rgba(206, 169, 100, 0), rgba(206, 169, 100, 1), rgba(206, 169, 100, 0))
+	--accentmedium: #{$accentmedium}
+	--base-video-sz-unit: 3rem
+	--text-size: 1.2rem
+	--h-colour: #{$accentcolour}
+	--bg-colour: white
+
+@font-face
+	font-family: DecoBorders
+	src: local('DecoBorders'), url('/common/fonts/Decoborders-W0R9.woff') format('woff')
+
+@font-face
+	font-family: CharisSIL
+	src: local('Charis SIL'), local('Charis-SIL'), url('/common/fonts/CharisSIL-Regular.woff') format('woff')
+
+@font-face
+	font-family: CharisSIL
+	font-style: italic
+	src: local('Charis SIL Italic'), local('Charis-SIL-Italic'), url('/common/fonts/CharisSIL-Italic.woff') format('woff')
+
+@font-face
+	font-family: CharisSIL
+	font-weight: bold
+	src: local('Charis SIL Bold'), local('Charis-SIL-Bold'), url('/common/fonts/CharisSIL-Bold.woff') format('woff')
+
+@font-face
+	font-family: CharisSIL
+	font-weight: bold
+	font-style: italic
+	src: local('Charis SIL Bold Italic'), local('Charis-SIL-Bold-Italic'), url('/common/fonts/CharisSIL-BoldItalic.woff') format('woff')
+
+@font-face
+	font-family: LatoFont
+	src: local('Lato'), url('/common/fonts/Lato_Regular.woff') format('woff')
+
+@font-face
+	font-family: LatoFont
+	font-style: italic
+	src: local('Lato Italic'), local('Lato-Italic'), url('/common/fonts/Lato_Italic.woff') format('woff')
+
+@font-face
+	font-family: LatoFont
+	font-weight: bold
+	src: local('Lato Bold'), local('Lato-Bold'), url('/common/fonts/Lato_Bold.woff') format('woff')
+
+@font-face
+	font-family: LatoFont
+	font-weight: bold
+	font-style: italic
+	src: local('Lato Bold Italic'), local('Lato-Bold-Italic'), url('/common/fonts/Lato_BoldItalic.woff') format('woff')
+
+@font-face
+	font-family: LatoFont
+	font-weight: 1000
+	src: local('Lato Black'), local('Lato-Black'), url('/common/fonts/Lato_Black.woff') format('woff')
+
+@font-face
+	font-family: LatoFont
+	font-weight: 1000
+	font-style: italic
+	src: local('Lato Black Italic'), local('Lato-Black-Italic'), url('/common/fonts/Lato_BlackItalic.woff') format('woff')
+
+@font-face
+	font-family: LatoFont
+	font-weight: 200
+	src: local('Lato Light'), local('Lato-Light'), url('/common/fonts/Lato_Light.woff') format('woff')
+
+@font-face
+	font-family: LatoFont
+	font-weight: 200
+	font-style: italic
+	src: local('Lato Light Italic'), local('Lato-Light-Italic'), url('/common/fonts/Lato_LightItalic.woff') format('woff')
+
+@font-face
+	font-family: FiraCode
+	src: local('Fira Code'), local('Fira-Code'), url('/common/fonts/FiraCode-Regular.woff') format('woff')
+
+@font-face
+	font-family: MalgunFont
+	src: local('Malgun Gothic'), local('Malgun-Gothic'), url('/common/fonts/malgun.woff') format('woff')
+
+@font-face
+	font-family: MalgunFont
+	font-weight: bold
+	src: local('Malgun Gothic Bold'), local('Malgun-Gothic Bold'), url('/common/fonts/malgunbd.woff') format('woff')
+
+@mixin scrollbar
+	scrollbar-color: $accentlight white
+	&::-webkit-scrollbar
+		&:vertical
+			width: .675rem
+		&:horizontal
+			height: .675rem
+	&::-webkit-scrollbar-track
+		background: white
+	&::-webkit-scrollbar-thumb
+		background: $accentlight
+		border-radius: 15px
+		border: 2px solid white
+		&:hover
+			background: $accentcolour
+
+@mixin button
+	background: $accentlight
+	color: $accentdarker
+	transition: background .5s, color .5s
+
+	&:hover
+		background: $accentcolour
+		color: white
+		cursor: pointer

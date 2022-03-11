@@ -1,0 +1,274 @@
+@import vars
+
+$page-index-width: 14.65rem
+
+@mixin link-hover
+	background: white
+	color: $accentcolour
+
+
+
+
+header
+	background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))
+	z-index: 1
+	transition: background .5s, box-shadow .5s
+	display: flex
+	flex-direction: row
+	height: $navbar-height
+	line-height: 2rem
+	align-items: flex-start
+	justify-content: space-between
+	padding: 0
+	font-size: 1.2rem
+	position: fixed
+	top: 0
+	width: 100%
+	box-shadow: var(--nav-box-shadow, none)
+	--nav-a-colour: white
+
+
+	a:hover, .a-active, #page_other:hover
+		@include link-hover
+
+		&:visited
+			color: $accentcolour
+
+	img
+		width: 3rem
+		height: 3rem
+		text-align: center
+		padding-top: .25rem
+		padding-bottom: .25rem
+
+	a, #page_other
+		transition: background .5s, color .5s
+		color: var(--nav-a-colour)
+
+		&:visited
+			color: var(--nav-a-colour)
+
+#page_index
+	display: flex
+	flex-direction: row
+	align-items: center
+	padding-top: .5rem
+	padding-bottom: .5rem
+
+	*
+		padding-right: .5rem
+
+	&:hover
+		@include link-hover
+
+	img
+		padding: 0 .5rem
+
+	a
+		text-align: center
+		height: 100%
+		line-height: 3rem
+		font-weight: bold
+		display: flex
+
+
+nav
+	display: flex
+	position: absolute
+	right: 0
+	flex-direction: row
+	margin: 0
+
+	a, #page_other
+		line-height: $navbar-height
+		text-align: center
+		min-width: $nav-link-min-width
+		padding: 0 .5rem
+
+
+#languages-drop-down
+	position: relative
+
+	&:hover
+		#languages-drop-down-content
+			display: flex
+			min-width: $nav-link-min-width + 1rem
+
+	a
+		display: inline-block
+	div a
+		text-align: left
+		padding-left: 1.5rem
+		padding-right: -.8rem
+		min-width: $nav-link-min-width - 1rem
+
+#languages-drop-down-content
+	background: #{$accentblack}
+	position: absolute
+	display: none
+	flex-direction: column
+	z-index: 2
+	top: $navbar-height
+
+	a
+		line-height: 2rem
+		margin-left: 0
+
+#icons
+	display: flex
+	flex-direction: row
+	flex-wrap: wrap
+	text-align: right
+	padding-right: 1rem
+	padding-bottom: 1rem
+	bottom: 0
+	right: 0
+	position: absolute
+
+	img
+		height: 2rem
+		margin: 0
+
+	a + a
+		margin-left: 1rem
+
+#hamburger-container
+	display: none
+	width: 4rem
+	transition: background .5s, color .5s
+
+	&:hover
+		@include link-hover
+
+		svg rect
+			fill: $accentcolour
+		cursor: pointer
+
+#hamburger
+	rect
+		fill: var(--nav-a-colour)
+
+#other-collapsable
+	display: contents
+
+#page_other
+	display: none
+
+	&:hover
+		cursor: pointer
+
+@media (min-width: 1250px)
+	.drop-down-content-centre
+		width: max-content
+		text-align: center
+		left: -50%
+		transform: translateX(10%)
+	.other-drop-down
+		position: relative
+
+		&:hover
+			.other-drop-down-content
+				display: flex
+				min-width: $nav-link-min-width + 1rem
+
+			.child-element
+				min-height: 2.5rem
+				line-height: 2.5rem
+
+		a
+			display: inline-block
+		div a
+			text-align: left
+			padding-left: 1.5rem
+			padding-right: -.8rem
+			min-width: $nav-link-min-width - 1rem
+
+	.other-drop-down-content
+		background: #{$accentblack}
+		position: absolute
+		display: none
+		flex-direction: column
+		z-index: 2
+		top: $navbar-height
+
+		a
+			line-height: 2rem
+			margin-left: 0
+
+@media (max-width: 800px)
+	#page-index-text
+		display: none
+	#page_index
+		width: auto
+
+	#banner
+		height: #{$banner-height * .7}
+
+		svg
+			padding: 0 .5rem
+	#hamburger-container
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+	nav
+		right: auto
+		left: 0
+		top: $navbar-height
+		display: none
+		background: $accentblack
+		flex-direction: column
+		text-align: left
+
+		a
+			text-align: left
+			line-height: 2.5rem
+	h1
+		top: 4rem
+		font-size: 2.5rem
+	#h1-underline
+		top: 7rem
+		border: .2em solid $accentlight
+	#icons img
+		height: 1.5rem
+	#languages-drop-down, .other-drop-down
+		a
+			text-align: left
+		> a
+			width: calc(100% - 1rem)
+		div a
+			padding-left: 2rem
+	#languages-drop-down-content, .other-drop-down-content
+		position: static
+		left: 7rem
+		display: flex
+		a
+			padding-left: 3rem
+	#other-collapsable
+		a
+			display: inline-block
+	#icons
+		right: revert
+		width: 100%
+		justify-content: center
+
+@media (max-width: 1250px) and (min-width: 800px)
+	#page_other
+		display: block
+	#other-collapsable
+		flex-direction: column
+		position: absolute
+		background: $accentblack
+		text-align: left
+		right: 0
+		top: $navbar-height
+		a
+			text-align: left
+			line-height: 2.5rem
+	.other-drop-down
+		a
+			display: inline-block
+			width: 100%
+	.other-drop-down-content
+		a
+			line-height: 2rem

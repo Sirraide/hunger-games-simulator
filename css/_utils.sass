@@ -1,0 +1,132 @@
+.cover
+	object-fit: cover
+
+.mgb0
+	margin-bottom: 0
+
+.mgr0
+	margin-right: 0
+
+.mgt0
+	margin-top: 0
+
+.mgl0
+	margin-left: 0
+
+.mgb1rem
+	margin-bottom: 1rem
+
+.mgr1rem
+	margin-right: 1rem
+
+.mgt1rem
+	margin-top: 1rem
+
+.mgl1rem
+	margin-left: 1rem
+
+.mgb2rem
+	margin-bottom: 2rem
+
+.mgr2rem
+	margin-right: 2rem
+
+.mgt2rem
+	margin-top: 2rem
+
+.mgl2rem
+	margin-left: 2rem
+
+.mg0auto
+	margin: 0 auto
+
+.g1
+	grid-column: 1
+
+.g2
+	grid-column: 2
+
+.g3
+	grid-column: 3
+
+.g1-3
+	grid-column: 1 / span 3
+
+.g2-3
+	grid-column: 2 / span 3
+
+.grid3
+	display: grid
+	grid-template-columns: repeat(3, 1fr)
+	gap: 1rem
+
+.grid2
+	display: grid
+	grid-template-columns: repeat(2, 1fr)
+	gap: 1rem
+
+.span2
+	grid-column: span 2
+
+.span3
+	grid-column: span 3
+
+.gap1
+	gap: 2rem
+
+.gap2
+	gap: 2rem
+
+@mixin flex
+	display: flex
+
+@mixin flex-row
+	@include flex
+	flex-direction: row
+
+@mixin flex-column
+	@include flex
+	flex-direction: column
+
+@mixin link-hover
+	background: white
+	color: $accentcolour
+
+.flex-row
+	@include flex-row
+
+.flex-row2
+	@include flex-row
+
+	& > *
+		max-width: 50%
+
+.flex-column
+	@include flex-column
+
+.flex-centre
+	align-items: center
+	justify-content: center
+
+.flex-wrap
+	flex-wrap: wrap
+
+.flex-same-size > *
+	flex-basis: 100%
+
+.text-hr
+	border: 2px solid $accentcolour
+	width: 80%
+	border-radius: 50%
+	padding: 0 2rem
+
+.align-start
+	align-items: flex-start
+
+.image-centred
+	max-width: 50%
+	margin: 1rem auto
+
+.image-centred-caption
+	margin-bottom: 2rem
+	text-align: center

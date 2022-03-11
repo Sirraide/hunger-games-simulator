@@ -1,0 +1,159 @@
+// ========== TEXT ==========
+
+section, p, ul, ol, li
+	font-size: var(--text-size)
+
+ul li
+	list-style-image: url("/images/fleur-de-lis.svg")
+
+.list-head
+	color: $accentcolour
+	margin-bottom: 0
+
+p.list-head + p
+	margin-block-start: 0
+
+.no-mg-block-start
+	margin-block-start: 0
+
+li::marker
+	color: $accentcolour
+
+.no-color
+	li::marker
+		color: black
+
+li + li
+	margin-top: .5rem
+
+p
+	margin-block-start: 0
+
+p + p
+	margin-block-start: 1rem
+
+a
+	text-decoration: none
+
+
+.spaced-button-group
+	width: 100%
+
+	a + a
+		margin-top: 2rem
+
+.spaced-button-group a, .link-button
+	display: block
+	text-align: center
+	height: 2rem
+	line-height: 2rem
+	width: 100%
+	@include button
+
+button
+	@include button
+
+// ========== HEADERS ==========
+
+h1, h2, h3, h4, h5, h6, a
+	color: var(--h-colour)
+	font-family: LatoFont, Arial, Noto Sans, sans-serif
+
+h1, h2
+	font-weight: 1000
+
+h2.stripe:first-of-type
+	margin-top: 0
+
+h1, h2, h3
+	text-align: center
+
+h2
+	font-size: 3rem
+
+$h2-decoration-height: 1.5rem
+
+.stripe:first-child, .content-first-h2
+	margin-top: 0
+
+.stripe
+	background: $accentlight
+	//box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .2)
+	color: $accentdarker
+	min-height: 10rem
+	display: flex
+	justify-content: center
+	align-items: center
+	margin: 3rem 0
+	position: relative
+
+	&::before, &::after
+		content: ""
+		position: absolute
+		font-size: 1rem
+		left: 0
+		color: $accentdarker
+		right: 0
+		background-image: url("/images/border.svg")
+		background-size: auto 1.5em
+		height: $h2-decoration-height
+	&::before
+		top: 0
+	&::after
+		bottom: 0
+
+.h3small
+	font-size: 1.5rem
+	font-weight: bold
+
+h3
+	font-size: 2rem
+
+.text-left
+	text-align: left
+	font-weight: bold
+
+h4
+	text-align: center
+	margin-bottom: .5rem
+	font-size: 1.2rem
+
+.no-fleurons
+	&:before
+		content: ''
+
+	&:after
+		content: ''
+
+.fleuron
+	font-family: RoughFleurons
+	font-size: 6rem
+	color: $accentcolour
+	text-align: center
+	margin-top: -2rem
+
+.fleuron-top
+	margin-bottom: 1rem
+
+.fleuron-bottom
+	margin-top: -1rem
+
+@media (max-width: 1250px)
+	\:root
+		--text-size: 1.1rem !important
+
+@media (max-width: 800px)
+	\:root
+		--text-size: 1rem !important
+
+	h2
+		font-weight: bold
+	h2:not(stripe), h2 span
+		font-size: max(1.5rem, 4vw)
+	h3
+		font-size: 1.5rem
+	.stripe
+		min-height: 7rem
+	.stripe:first-of-type
+		margin-top: 0
+

@@ -1,0 +1,138 @@
+<!--USE LEAN BANNER-->
+<eval>return linkcss('/css/tools/hunger_games_simulator.css')</eval>
+<eval>return linkmodule('/js/tools/hunger_games_simulator.js')</eval>
+<template id="game-character-setup-template">
+	<form class="game-character">
+		<div class="name-and-pronouns flex-column">
+			<div class="flex-row">
+				<button type="button" class="character-delete danger-button">Delete Character</button>
+			</div>
+			<div class="flex-row">
+				<button type="button" class="image-remove">Remove Image</button>
+			</div>
+
+			<div class="flex-row"><label>Name:</label>
+				<input class="character-name" name="character" type="text"></div>
+
+			<div class="flex-row custom-gender-input-wrapper" style="display: none;"><label>Pronouns:</label>
+				<input class="custom-gender-input" name="gender_input" placeholder="they/them/their/themself" type="text"></div>
+
+			<div class="flex-row"><label>Pronouns:</label>
+				<select class="gender-select" name="gender_select">
+					<option value="m">he/him/his/himself</option>
+					<option value="f">she/her/her/herself</option>
+					<option value="c">they/them/their/themself</option>
+					<option value="n">No Pronouns</option>
+					<option value="other">Other</option>
+				</select>
+			</div>
+		</div>
+		<div id="image-wrapper" class="image-wrapper"><img alt="Click to add an image" class="non-previewable-icon tribute-image"></div>
+	</form>
+</template>
+
+<template id="event-message-template">
+	<div class="event-message-wrapper flex-column flex-centre">
+		<div class="event-message-images flex-row"></div>
+		<p class="event-message"></p>
+	</div>
+</template>
+
+<template id="death-message-template">
+	<div class="death-message-wrapper flex-column flex-centre">
+		<div class="death-message-image image-wrapper"></div>
+		<p class="death-message"></p>
+	</div>
+</template>
+
+<template id="game-fatalities-template">
+	<div class="round-fatalities-wrapper flex-column flex-centre">
+		<h6 class="round-title"></h6>
+		<article class="round-fatalities"></article>
+	</div>
+</template>
+
+<template id="tribute-stats-wrapper-template">
+	<div class="tribute-stats-wrapper">
+		<div class="alive-stats-wrapper">
+			<div class="alive-stats"></div>
+		</div>
+		<div class="dead-stats-wrapper">
+			<h3 class="tribute-stats-header">The Rest</h3>
+			<div class="dead-stats"></div>
+		</div>
+	</div>
+</template>
+
+<template id="tribute-stats-template">
+	<div class="tribute-stats flex-column flex-centre">
+		<div class="tribute-image image-wrapper flex-row"></div>
+		<p class="tribute-stats-name"></p>
+		<p class="tribute-stats-kills">Kills: 0</p>
+		<p class="tribute-stats-died"></p>
+	</div>
+</template>
+
+<template id="edit-events-table-template">
+	<eval>return linkcss('/css/tools/hunger_games_simulator.css')</eval>
+	<eval>return linkcss('/common/css/style.css')</eval>
+	<eval>return linkmodule('/js/tools/hunger_games_simulator.js')</eval>
+	<script>
+		function CheckCheckbox(element) { element.firstChild.firstChild.click() }
+
+		function HandleCheckbox(checkbox) {
+			let root = checkbox.getRootNode()
+			if (!checkbox.checked) root.events_disabled_map.set(+checkbox.dataset.id, '')
+			else root.events_disabled_map.delete(+checkbox.dataset.id)
+		}
+
+	</script>
+	<div id="tribute-stats-buttons">
+		<button onclick="Game.UI.DownloadEvents()">Download</button>
+		<button onclick="Game.UI.LoadAddEvents(false)"><abbr title="This will add events if they're not already in the list">Add</abbr></button>
+		<button onclick="Game.UI.LoadAddEvents(true)"><abbr title="Caution! This will completely overwrite the current event list">Load</abbr></button>
+		<button onclick="Game.UI.ResetEvents()"><abbr title="This will reset the event lists to contain only builtin events">Reset</abbr></button>
+	</div>
+	<div id="edit-events-table-wrapper">
+		<table id="edit-events-table" class="table-no-style">
+			<thead>
+			<tr>
+				<th></th>
+				<th>Message</th>
+				<th>List</th>
+				<th>Deaths</th>
+				<th>Killers</th>
+			</tr>
+			</thead>
+			<!--		/<tbody id="edit-events-tbody"></tbody>-->
+		</table>
+	</div>
+</template>
+
+<h2 class="stripe"><span>Hunger Games Simulator</span></h2>
+<div id="game-wrapper">
+	<div id="create-game">
+		<section>
+			<h3>Choose your characters</h3>
+			<div id="player-stats"><p id="current-players">Current Players: 0</p></div>
+			<button id="edit-events" onclick="Game.UI.OpenEventDialog()">Edit Events</button>
+			<button id="save-setup" onclick="Game.UI.SaveSetup()">Save Setup</button>
+			<button id="load-setup" onclick="Game.UI.LoadSetup()">Load Setup</button>
+			<div id="character-selects"></div>
+			<div id="start-game-wrapper">
+				<button type="button" id="start-game-button" onclick="Game.CreateGame()">Start Game</button>
+			</div>
+		</section>
+	</div>
+	<div id="game">
+		<section id="game-content-wrapper">
+			<h3 id="game-title"></h3>
+			<p id="game-before-content"></p>
+			<div id="game-content"></div>
+			<div class="flex-row" id="game-buttons-wrapper">
+				<button id="advance-game">Proceed</button>
+				<button id="abort-game" class="danger-button" onclick="Game.AbortGame()">Abort Game</button>
+			</div>
+		</section>
+	</div>
+</div>
