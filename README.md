@@ -2,7 +2,7 @@
 
 This repository is meant to serve as a way for people to examine and
 contribute to the Hunger Games Simulator on 
-[nguh.org](www.nguh.org/tools/hunger_games_simulator).
+[nguh.org](https://www.nguh.org/tools/hunger_games_simulator).
 
 The simulator logic is implemented mainly in 
 [hunger_games_simulator.ts](./hunger_games_simulator.ts),
