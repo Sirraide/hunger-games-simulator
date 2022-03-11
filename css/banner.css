@@ -81,6 +81,15 @@
   font-family: FiraCode;
   src: local("Fira Code"), local("Fira-Code"), url("/common/fonts/FiraCode-Regular.woff") format("woff");
 }
+@font-face {
+  font-family: MalgunFont;
+  src: local("Malgun Gothic"), local("Malgun-Gothic"), url("/common/fonts/malgun.woff") format("woff");
+}
+@font-face {
+  font-family: MalgunFont;
+  font-weight: bold;
+  src: local("Malgun Gothic Bold"), local("Malgun-Gothic Bold"), url("/common/fonts/malgunbd.woff") format("woff");
+}
 header {
   background: linear-gradient(black, rgba(0, 0, 0, 0));
   z-index: 1;

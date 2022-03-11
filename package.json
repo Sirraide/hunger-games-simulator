@@ -1,0 +1,26 @@
+{
+  "name": "hunger_games_simulator",
+  "version": "1.0.0",
+  "description": "This repository is meant to serve as a way for people to examine and contribute to the Hunger Games Simulator on  [nguh.org](www.nguh.org/tools/hunger_games_simulator).",
+  "main": "simple_server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sirraide/hunger-games-simulator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sirraide/hunger-games-simulator/issues"
+  },
+  "homepage": "https://github.com/Sirraide/hunger-games-simulator#readme",
+  "dependencies": {
+    "http": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
+  }
+}

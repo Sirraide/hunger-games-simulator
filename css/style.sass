@@ -1,4 +1,4 @@
-@import vars
+@import ./vars
 
 *
 	margin-block-start: 0
@@ -77,16 +77,16 @@ body
 		align-items: center
 		justify-content: flex-start
 
-@import text
-@import content
-@import components
-@import utils
+@import ./text
+@import ./content
+@import ./components
+@import ./utils
 
 #banner
 	width: 100%
 	height: $banner-height
 	margin: 0
-	background-image: url("/images/banner.jpg")
+	background-image: url("../images/banner.jpg")
 	background-repeat: no-repeat
 	background-size: cover
 	box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .5), 0 2px 1rem

@@ -1,0 +1,34 @@
+@import './vars'
+
+body
+	background: $accentblack
+	color: white
+
+main
+	margin-top: $navbar-height !important
+
+#content-wrapper
+	min-height: calc(100vh - #{$content-wrapper-padding-top})
+
+$h2-decoration-height: 1.1rem
+.stripe
+	text-transform: uppercase
+	font-size: 2rem
+	background: $accentlight
+	color: $accentdarker
+	min-height: 7rem
+	display: flex
+	justify-content: center
+	align-items: center
+	margin: 3rem 0
+	position: relative
+	&::before, &::after
+		content: ""
+		position: absolute
+		font-size: .75rem
+		left: 0
+		color: $accentdarker
+		right: 0
+		background-image: url("/images/border.svg")
+		background-size: auto 1.5em
+		height: $h2-decoration-height

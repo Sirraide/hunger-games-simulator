@@ -1,6 +1,6 @@
 /* eslint-disable */
-import { Dialog, DialogTemplate, DialogType, FileType } from "../../common/js/dialog.js";
-import { SetOpenImagePreview } from "../../common/js/menus.js";
+import { Dialog, DialogTemplate, DialogType, FileType } from "./js/dialog.js";
+import { SetOpenImagePreview } from "./js/menus.js";
 
 const light_accent = '#cea964'
 const accent_black = '#1e1e1e'

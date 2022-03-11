@@ -1,0 +1,6 @@
+*.js
+*.js.map
+*.css
+node_modules/
+package-lock.json
+.idea
