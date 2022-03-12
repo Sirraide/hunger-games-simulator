@@ -13,7 +13,8 @@ enum DialogElement {
 export enum DialogType {
     DEFAULT,
     ERROR,
-    FILE
+    FILE,
+    MULTIFILE
 }
 
 export enum FileType {
@@ -69,6 +70,7 @@ export interface DialogData {
     last_input_text: string | null
     textbox: HTMLInputElement | null
     file_data?: any,
+    file_list?: any,
     dialog: Dialog
 }
 
@@ -131,6 +133,9 @@ export class Dialog {
             case DialogType.FILE:
                 this.FileDialog()
                 break
+            case DialogType.MULTIFILE:
+                this.MultiFileDialog()
+                break
             default:
                 this.DefaultDialog()
         }
@@ -181,6 +186,38 @@ export class Dialog {
         this.SetDefaultProperty(DialogElement.TITLE, 'background', '#9d2c2c')
         this.SetDefaultProperty(DialogElement.TITLE, 'color', 'whitesmoke')
     }
+    private MultiFileDialog() {
+        let row = document.createElement('div')
+        let input = document.createElement('input')
+        let button = document.createElement('button')
+
+        row.classList.add('dialog-element', 'flex-row', 'file-input-control')
+        input.type = 'file'
+        input.multiple = true;
+        button.innerHTML = 'Select Files'
+        button.onclick = function (event) {
+            event.preventDefault();
+            input.click();
+        }
+
+        let _this = this
+        input.onchange = function (event) {
+            if (!event.target) return
+            _this.data.file_list = (<HTMLInputElement>event.target)?.files
+            if (_this.data.file_list) {
+                _this.accept()
+            } 
+        }
+
+        row.appendChild(input)
+        this.buttons.appendChild(button)
+        this.root.appendChild(row)
+        this.DefaultDialog()
+        if ('accept' in this.optional) this.optional.accept.onclick = () => {
+            _this.accept()
+        }
+    }
+
 
     private FileDialog() {
         let row = document.createElement('div')
