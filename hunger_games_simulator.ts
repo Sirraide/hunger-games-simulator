@@ -47,7 +47,6 @@ function AddCharacter() {
     RegisterEventListeners()
 }
 
-// TODO: default pronoun?
 function AddCharacterFromImage(imgsrc: string, name: string) {
     add_character_button.remove()
     current_players.innerHTML = 'Current Players: ' + ++player_count
