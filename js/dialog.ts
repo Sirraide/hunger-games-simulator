@@ -204,9 +204,6 @@ export class Dialog {
         input.onchange = function (event) {
             if (!event.target) return
             _this.data.file_list = (<HTMLInputElement>event.target)?.files
-            if (_this.data.file_list) {
-                _this.accept()
-            } 
         }
 
         row.appendChild(input)

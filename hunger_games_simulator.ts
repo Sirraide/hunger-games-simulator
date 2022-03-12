@@ -556,7 +556,7 @@ const UI = {
             preserve_extern_urls: true,
             description: 'Select multiple files to add as tributes. Their names will default to the filename provided.',
         }).then( (dialog: DialogData) => {
-            if (!dialog.file_list) return;
+            if (!dialog || !dialog.file_list) return;
             for (let i = 0; i < dialog.file_list.length; i++) {
                 const file = dialog.file_list[i];
                 if (file.type.match(/image\/*/)) {
