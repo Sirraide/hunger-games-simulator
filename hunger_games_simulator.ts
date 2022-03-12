@@ -47,6 +47,7 @@ function AddCharacter() {
     RegisterEventListeners()
 }
 
+// TODO: default pronoun?
 function AddCharacterFromImage(imgsrc: string, name: string) {
     add_character_button.remove()
     current_players.innerHTML = 'Current Players: ' + ++player_count
@@ -54,7 +55,11 @@ function AddCharacterFromImage(imgsrc: string, name: string) {
     character_selects.appendChild(newCharacter)
     // @ts-ignore
     character_selects.lastElementChild.getElementsByClassName("character-name")[0].value = name 
-    // TODO: add image and we are done
+    // @ts-ignore
+    character_selects.lastElementChild.getElementsByClassName("gender-select")[0].value = "c"
+    // @ts-ignore
+    character_selects.lastElementChild.getElementsByClassName("tribute-image")[0].src = imgsrc
+    
     character_selects.appendChild(add_character_button)
     RegisterEventListeners()
 }
@@ -544,13 +549,13 @@ const UI = {
 
     AddMultiFiles() {
         OpenMultiFileDialog({
-            title: 'Bulk Add Images',
+            title: 'Upload Images',
             title_style: {
                 background: light_accent,
                 color: '#463c2a'
             } as CSSStyleDeclaration,
             preserve_extern_urls: true,
-            description: 'Click below to upload multiple images. This will create tributes with names identical to the filenames of each image uploaded.',
+            description: 'Select multiple files to add as tributes. Their names will default to the filename provided.',
         }).then( (dialog: DialogData) => {
             if (!dialog.file_list) return;
             for (let i = 0; i < dialog.file_list.length; i++) {
