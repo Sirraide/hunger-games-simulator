@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Dialog, DialogTemplate, DialogType, FileType } from "./js/dialog.js";
+import { Dialog, DialogData, DialogTemplate, DialogType, FileType } from "./js/dialog.js";
 import { SetOpenImagePreview } from "./js/menus.js";
 
 const light_accent = '#cea964'
@@ -43,6 +43,22 @@ function AddCharacter() {
     add_character_button.remove()
     current_players.innerHTML = 'Current Players: ' + ++player_count
     character_selects.appendChild(game_character_template.cloneNode(true))
+    character_selects.appendChild(add_character_button)
+    RegisterEventListeners()
+}
+
+function AddCharacterFromImage(imgsrc: string, name: string) {
+    add_character_button.remove()
+    current_players.innerHTML = 'Current Players: ' + ++player_count
+    const newCharacter: Node = game_character_template.cloneNode(true)
+    character_selects.appendChild(newCharacter)
+    // @ts-ignore
+    character_selects.lastElementChild.getElementsByClassName("character-name")[0].value = name 
+    // @ts-ignore
+    character_selects.lastElementChild.getElementsByClassName("gender-select")[0].value = "c"
+    // @ts-ignore
+    character_selects.lastElementChild.getElementsByClassName("tribute-image")[0].src = imgsrc
+    
     character_selects.appendChild(add_character_button)
     RegisterEventListeners()
 }
@@ -118,6 +134,20 @@ function OpenFileDialog(options: DialogTemplate) {
     return Dialog.open({
         ...options,
         type: DialogType.FILE,
+        accept: 'Ok',
+        cancel: 'Cancel',
+        root_style: {
+            maxWidth: '13cm',
+            color: 'white',
+            background: accent_black
+        } as CSSStyleDeclaration,
+    })
+}
+
+function OpenMultiFileDialog(options: DialogTemplate) {
+    return Dialog.open({
+        ...options,
+        type: DialogType.MULTIFILE,
         accept: 'Ok',
         cancel: 'Cancel',
         root_style: {
@@ -514,6 +544,26 @@ const UI = {
         }
 
         download('hgsimulator-setup.json', ObjectToDataURL(state));
+    },
+
+    AddMultiFiles() {
+        OpenMultiFileDialog({
+            title: 'Upload Images',
+            title_style: {
+                background: light_accent,
+                color: '#463c2a'
+            } as CSSStyleDeclaration,
+            preserve_extern_urls: true,
+            description: 'Select multiple files to add as tributes. Their names will default to the filename provided.',
+        }).then( (dialog: DialogData) => {
+            if (!dialog || !dialog.file_list) return;
+            for (let i = 0; i < dialog.file_list.length; i++) {
+                const file = dialog.file_list[i];
+                if (file.type.match(/image\/*/)) {
+                    AddCharacterFromImage(URL.createObjectURL(file), file.name.substr(0, file.name.lastIndexOf(".")) || file.name)
+                }
+            }
+        } )
     },
 
     LoadSetup() {
