@@ -1,3 +1,5 @@
+# THIS REPOSITORY HAS BEEN MOVED TO https://gitlab.com/agma-schwa-public/hunger-games-simulator
+
 # Hunger Games Simulator
 
 IMPORTANT: Due to how tightly the HGS is integrated into nguh.org, this repository
